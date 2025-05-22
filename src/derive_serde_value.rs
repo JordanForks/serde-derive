@@ -22,7 +22,7 @@ pub fn impl_serde_value(ast: DeriveInput) -> TokenStream2 {
         let value_impl = quote! {
             impl ::slog::Value for #name {
                 fn serialize(&self, _record: &::slog::Record, key: ::slog::Key, ser: &mut dyn ::slog::Serializer) -> ::slog::Result {
-                    ser.emit_serde(&key, self)
+                    ser.emit_serde(key, self)
                 }
             }
         };
